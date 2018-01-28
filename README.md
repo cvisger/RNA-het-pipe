@@ -1,5 +1,17 @@
 # RNA-het-pipe
 
+# AWS ubuntu setup
+
+press enter when prompted and install to default locations
+```
+wget https://raw.githubusercontent.com/cvisger/RNA-het-pipe/master/setup.sh
+wget https://raw.githubusercontent.com/cvisger/RNA-het-pipe/master/apps.sh
+chmod +x setup.sh
+chmod +x apps.sh
+./setup.sh
+./apps.sh
+```
+
 # test run with one sample
 
 ```
