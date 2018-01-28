@@ -20,3 +20,4 @@ fastqc ERR1665297.fastq
 trimmomatic SE ERR1665297.fastq ERR1665297.trimmed.fq SLIDINGWINDOW:4:30
 fastqc ERR1665297.trimmed.fq
 ```
+Trim output: Input Reads: 20856487 Surviving: 17829749 (85.49%) Dropped: 3026738 (14.51%)
