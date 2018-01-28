@@ -1,0 +1,17 @@
+curl
+unzip
+build-essential
+ncurses-dev
+byacc
+zlib1g-dev
+python-dev
+git
+cmake
+python-pip
+libhtml-parser-perl
+liblist-moreutils-perl
+libwww-perl
+default-jdk
+ant
+ack-grep
+liblist-allutils-perl
