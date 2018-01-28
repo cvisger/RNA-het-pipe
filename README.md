@@ -1,6 +1,6 @@
 # RNA-het-pipe
 
-#test run
+# test run with one sample
 
 ```
 fastq-dump ERR1665297
