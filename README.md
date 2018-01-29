@@ -26,7 +26,7 @@ fastqc ERR1665297.trimmed.fq
 Trim output: Input Reads: 20856487 Surviving: 17829749 (85.49%) Dropped: 3026738 (14.51%)
 
 # TODO
-specify size when trimming....ditch really short reads
+specify size when trimming....ditch really short reads also test just using ILLUMINACLIP TruSeq Adapter and no quality clip
 
 Map to ref via gsnap
 
