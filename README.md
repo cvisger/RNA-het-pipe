@@ -10,6 +10,9 @@ chmod +x setup.sh
 chmod +x apps.sh
 ./setup.sh
 ./apps.sh
+#pull ref
+wget https://zenodo.org/record/17232/files/redclover_v2.1.fasta
+wget https://zenodo.org/record/17232/files/redclover_v2.1.gff3
 ```
 
 # test run with one sample
