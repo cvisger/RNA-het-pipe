@@ -26,3 +26,4 @@ Trim output: Input Reads: 20856487 Surviving: 17829749 (85.49%) Dropped: 3026738
 specify size when trimming....ditch really short reads.
 Map to ref via gsnap
 call/phase via freebayes
+parse AN per gene and group by chromosome of origin
