@@ -64,7 +64,8 @@ freebayes --no-indels --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off -
 ```
 
 ## parse AN per gene and group by chromosome of origin
-
+### See VCF and GFF (TxDb) reading-in: https://bioconductor.org/help/workflows/annotation/Annotating_Genomic_Ranges/
+### See gene-based VCF variant parsing: https://bioconductor.org/help/workflows/variants/
 
 
 
