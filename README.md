@@ -11,8 +11,9 @@ chmod +x apps.sh
 ./setup.sh
 ./apps.sh
 #pull ref
-wget https://zenodo.org/record/17232/files/redclover_v2.1.fasta
-wget https://zenodo.org/record/17232/files/redclover_v2.1.gff3
+wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.toplevel.fa.gz
+gunzip Trifolium_pratense.Trpr.dna.toplevel.fa.gz
+mv Trifolium_pratense.Trpr.dna.toplevel.fa redclover_ref.fa
 ```
 
 # test run with one sample 
@@ -41,7 +42,7 @@ Trim output: Input Reads: 20856487 Surviving: 19381820 (92.93%) Dropped: 1474667
 Index reference genome (command format:  gmap_build -d <genome> [-k <kmer size>] <fasta_files...>)  
 Note: kmer size of 15 will require 4 GB RAM
 ```
-gmap_build -d redclover_v2.1 -k 15 redclover_v2.1.fasta
+gmap_build -d redclover_ref -k 15 redclover_ref.fa
 ```
 
 ## Map SE reads with default parameters and pipe to samtools
@@ -51,7 +52,7 @@ gsnap should work with genomes up to ~4.3 Gbp (otherwise an error will be thrown
   added '--gunzip' option to work on .gz files    
   added '--novelsplicing 1' for RNA-seq data  
 ```
-gsnap --gunzip -d redclover_v2.1 --novelsplicing 1 --format sam --read-group-id=ERR1665297 --read-group-library=ERR1665297 --read-group-platform=illumina --force-single-end ERR1665297.trimmed.fq | samtools view -Sbh - | samtools sort -O bam -T 12345 - > ERR1665297_sorted.bam
+gsnap --gunzip -d redclover_ref --novelsplicing 1 --format sam --read-group-id=ERR1665297 --read-group-library=ERR1665297 --read-group-platform=illumina --force-single-end ERR1665297.trimmed.fq | samtools view -Sbh - | samtools sort -O bam -T 12345 - > ERR1665297_sorted.bam
 ```
 
 ## index BAM
@@ -68,7 +69,7 @@ samtools stats ERR1665297_sorted.bam > ERR1665297_sorted.stats.txt
 ## call/phase via freebayes (default calls SNPs, indels and multincleotide polymorphisms)
 
 ***--left-align-indels isnt a valid command "do we want `--dont-left-align-indels` "   also need ref added in after -f***
-freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 -f redclover_v2.1.fasta ERR1665297_sorted.bam > ERR1665297_to_redclover_v2.1.vcf
+freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 -f redclover_v2.1.fasta ERR1665297_sorted.bam > ERR1665297_to_redclover_ref.vcf
 ```
 freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 --left-align-indels -f ERR1665297_sorted.bam > ERR1665297_to_redclover_v2.1.vcf
 ```
