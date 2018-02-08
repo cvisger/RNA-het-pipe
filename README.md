@@ -15,7 +15,8 @@ wget https://zenodo.org/record/17232/files/redclover_v2.1.fasta
 wget https://zenodo.org/record/17232/files/redclover_v2.1.gff3
 ```
 
-# test run with one sample
+# test run with one sample 
+## can add --gzip option to compress fastq-dump output
 
 ```
 fastq-dump ERR1665297
@@ -27,11 +28,14 @@ Trim output: Input Reads: 20856487 Surviving: 17829749 (85.49%) Dropped: 3026738
 
 # TODO
 specify size when trimming....ditch really short reads also test just using ILLUMINACLIP TruSeq Adapter and no quality clip
+## DONE: added a final MINLEN option and relaxed trimming slightly to phred 20
+```
+trimmomatic SE ERR1665297.fastq.gz ERR1665297.trimmed.fq.gz SLIDINGWINDOW:4:20 MINLEN:36
+fastqc ERR1665297.trimmed.fq.gz
+```
+Trim output: Input Reads: 20856487 Surviving: 19381820 (92.93%) Dropped: 1474667 (7.07%)
+(see: ERR1665297.trimmed_fastqc_SW_4_20_MINLEN36.html)
 
-## Compress trimmed reads
-```
-gzip ERR1665297.trimmed.fq
-```
 
 ## Map to ref via gsnap
 Index reference genome (command format:  gmap_build -d <genome> [-k <kmer size>] <fasta_files...>)  
