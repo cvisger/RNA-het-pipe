@@ -28,14 +28,14 @@ Trim output: Input Reads: 20856487 Surviving: 17829749 (85.49%) Dropped: 3026738
 
 # TODO
 specify size when trimming....ditch really short reads also test just using ILLUMINACLIP TruSeq Adapter and no quality clip
-DONE: added a final MINLEN option and relaxed trimming slightly to phred 20
+Part-done: added a final MINLEN option and relaxed trimming slightly to phred 20
 ```
 trimmomatic SE ERR1665297.fastq.gz ERR1665297.trimmed.fq.gz SLIDINGWINDOW:4:20 MINLEN:36
 fastqc ERR1665297.trimmed.fq.gz
 ```
-Trim output: Input Reads: 20856487 Surviving: 19381820 (92.93%) Dropped: 1474667 (7.07%)
+Trim output: Input Reads: 20856487 Surviving: 19381820 (92.93%) Dropped: 1474667 (7.07%) 
 (see: ERR1665297.trimmed_fastqc_SW_4_20_MINLEN36.html)
-m,./
+
 
 ## Map to ref via gsnap
 Index reference genome (command format:  gmap_build -d <genome> [-k <kmer size>] <fasta_files...>)  
@@ -64,7 +64,7 @@ samtools stats ERR1665297_sorted.bam > ERR1665297_sorted.stats.txt
 
 ## call/phase via freebayes (default calls SNPs, indels and multincleotide polymorphisms)
 ```
-freebayes --no-indels --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 --left-align-indels -f ERR1665297_sorted.bam > ERR1665297_to_redclover_v2.1.vcf
+freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 --left-align-indels -f ERR1665297_sorted.bam > ERR1665297_to_redclover_v2.1.vcf
 ```
 
 ## parse AN per gene and group by chromosome of origin
