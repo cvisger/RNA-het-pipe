@@ -64,6 +64,9 @@ samtools stats ERR1665297_sorted.bam > ERR1665297_sorted.stats.txt
 
 
 ## call/phase via freebayes (default calls SNPs, indels and multincleotide polymorphisms)
+
+***need ref added in after -f***
+freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 -f redclover_v2.1.fasta ERR1665297_sorted.bam > ERR1665297_to_redclover_v2.1.vcf
 ```
 freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 --left-align-indels -f ERR1665297_sorted.bam > ERR1665297_to_redclover_v2.1.vcf
 ```
