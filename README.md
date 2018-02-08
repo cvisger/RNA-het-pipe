@@ -10,10 +10,16 @@ chmod +x setup.sh
 chmod +x apps.sh
 ./setup.sh
 ./apps.sh
-#pull ref
-wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.toplevel.fa.gz
-gunzip Trifolium_pratense.Trpr.dna.toplevel.fa.gz
-mv Trifolium_pratense.Trpr.dna.toplevel.fa redclover_ref.fa
+#pull just chromosome assemblies  and cat
+wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.chromosome.LG1.fa.gz
+wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.chromosome.LG2.fa.gz
+wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.chromosome.LG3.fa.gz
+wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.chromosome.LG4.fa.gz
+wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.chromosome.LG5.fa.gz
+wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.chromosome.LG6.fa.gz
+wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.chromosome.LG7.fa.gz
+gunzip *LG*.fa.gz
+cat *LG*.fa > redclover_ref.fa
 ```
 
 # test run with one sample 
