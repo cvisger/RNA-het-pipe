@@ -46,10 +46,10 @@ gmap_build -d redclover_v2.1 -k 15 redclover_v2.1.fasta
 
 ## Map SE reads with default parameters and pipe to samtools
 format: gsnap --gunzip -d <genome> --force-single-end <fastq1.gz> [<fastq2.gz>...])  
-gsnap should work with genomes up to ~4.3 Gbp (otherwise an error will be thrown asking for gsnap1)
-  ***--gunzip doesn't work on the gsnap install running on aws -- need to gunzip first***
-  added '--gunzip' option to work on .gz files 
-  added '--novelsplicing 1' for RNA-seq data
+gsnap should work with genomes up to ~4.3 Gbp (otherwise an error will be thrown asking for gsnap1)  
+  ***--gunzip doesn't work on the gsnap install running on aws -- need to gunzip first***  
+  added '--gunzip' option to work on .gz files    
+  added '--novelsplicing 1' for RNA-seq data  
 ```
 gsnap --gunzip -d redclover_v2.1 --novelsplicing 1 --format sam --read-group-id=ERR1665297 --read-group-library=ERR1665297 --read-group-platform=illumina --force-single-end ERR1665297.trimmed.fq | samtools view -Sbh - | samtools sort -O bam -T 12345 - > ERR1665297_sorted.bam
 ```
