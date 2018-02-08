@@ -8,3 +8,4 @@ conda install fastqc -y
 conda install trimmomatic -y
 conda install freebayes -y
 conda install -c bioconda gmap -y
+conda install -c bioconda samtools -y
