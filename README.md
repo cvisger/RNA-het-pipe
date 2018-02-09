@@ -54,9 +54,9 @@ gmap_build -d redclover_ref -k 15 redclover_ref.fa
 ## Map SE reads with default parameters and pipe to samtools
 format: gsnap --gunzip -d <genome> --force-single-end <fastq1.gz> [<fastq2.gz>...])  
 gsnap should work with genomes up to ~4.3 Gbp (otherwise an error will be thrown asking for gsnap1)  
-  ***--gunzip doesn't work on the gsnap install running on aws -- need to gunzip first***  
   added '--gunzip' option to work on .gz files    
-  added '--novelsplicing 1' for RNA-seq data  
+  added '--novelsplicing 1' for RNA-seq data   
+ ***--gunzip doesn't work on the gsnap install running on aws -- need to gunzip first***  
   added '.gz' ending to have 'ERR1665297.trimmed.fq.gz'
 ```
 gsnap --gunzip -d redclover_ref --novelsplicing 1 --format sam --read-group-id=ERR1665297 --read-group-library=ERR1665297 --read-group-platform=illumina --force-single-end ERR1665297.trimmed.fq.gz | samtools view -Sbh - | samtools sort -O bam -T 12345 - > ERR1665297_sorted.bam
@@ -78,7 +78,7 @@ samtools stats ERR1665297_sorted.bam > ERR1665297_sorted.stats.txt
 ***--left-align-indels isnt a valid command "do we want `--dont-left-align-indels`" my mistake, option removed     
 also need ref added in after -f***
 ```
-freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 -f redclover_v2.1.fasta ERR1665297_sorted.bam > ERR1665297_to_redclover_ref.vcf
+freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 -f redclover_ref.fa ERR1665297_sorted.bam > ERR1665297_to_redclover_ref.vcf
 ```
 
 
