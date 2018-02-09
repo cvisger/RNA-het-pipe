@@ -20,6 +20,8 @@ wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense
 wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.chromosome.LG7.fa.gz
 gunzip *LG*.fa.gz
 cat *LG*.fa > redclover_ref.fa
+#gff:
+wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/gff3/trifolium_pratense/Trifolium_pratense.Trpr.38.chr.gff3.gz
 ```
 
 # test run with one sample 
