@@ -34,7 +34,7 @@ fastqc ERR1665297.trimmed.fq
 Trim output: Input Reads: 20856487 Surviving: 17829749 (85.49%) Dropped: 3026738 (14.51%)
 
 # TODO
-specify size when trimming....ditch really short reads also test just using ILLUMINACLIP TruSeq Adapter and no quality clip
+specify size when trimming....ditch really short reads also test just using ILLUMINACLIP TruSeq Adapter and no quality clip  
 Part-done: added a final MINLEN option and relaxed trimming slightly to phred 20
 ```
 trimmomatic SE ERR1665297.fastq.gz ERR1665297.trimmed.fq.gz SLIDINGWINDOW:4:20 MINLEN:36
@@ -57,8 +57,9 @@ gsnap should work with genomes up to ~4.3 Gbp (otherwise an error will be thrown
   ***--gunzip doesn't work on the gsnap install running on aws -- need to gunzip first***  
   added '--gunzip' option to work on .gz files    
   added '--novelsplicing 1' for RNA-seq data  
+  added '.gz' ending to have 'ERR1665297.trimmed.fq.gz'
 ```
-gsnap --gunzip -d redclover_ref --novelsplicing 1 --format sam --read-group-id=ERR1665297 --read-group-library=ERR1665297 --read-group-platform=illumina --force-single-end ERR1665297.trimmed.fq | samtools view -Sbh - | samtools sort -O bam -T 12345 - > ERR1665297_sorted.bam
+gsnap --gunzip -d redclover_ref --novelsplicing 1 --format sam --read-group-id=ERR1665297 --read-group-library=ERR1665297 --read-group-platform=illumina --force-single-end ERR1665297.trimmed.fq.gz | samtools view -Sbh - | samtools sort -O bam -T 12345 - > ERR1665297_sorted.bam
 ```
 
 ## index BAM
@@ -74,11 +75,12 @@ samtools stats ERR1665297_sorted.bam > ERR1665297_sorted.stats.txt
 
 ## call/phase via freebayes (default calls SNPs, indels and multincleotide polymorphisms)
 
-***--left-align-indels isnt a valid command "do we want `--dont-left-align-indels` "   also need ref added in after -f***
+***--left-align-indels isnt a valid command "do we want `--dont-left-align-indels`" my mistake, option removed     
+also need ref added in after -f***
+```
 freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 -f redclover_v2.1.fasta ERR1665297_sorted.bam > ERR1665297_to_redclover_ref.vcf
 ```
-freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 --left-align-indels -f ERR1665297_sorted.bam > ERR1665297_to_redclover_v2.1.vcf
-```
+
 
 ## parse AN per gene and group by chromosome of origin
 append to out.csv
