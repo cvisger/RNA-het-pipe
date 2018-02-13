@@ -81,9 +81,9 @@ samtools stats ERR1665297_sorted.bam > ERR1665297_sorted.stats.txt
 also need ref added in after -f   
 Consider adding options:  
 --haplotype-length 50 [increases max non-complex haplotype size]
---min-mapping-quality 30 [quality filter]
---min-base-quality 20 [quality filter]
---min-coverage 10 [to skip low coverage sites]
+--min-mapping-quality 30 [quality filter]   
+--min-base-quality 20 [quality filter]  
+--min-coverage 10 [to skip low coverage sites]   
 
 
 ```
