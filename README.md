@@ -80,7 +80,7 @@ samtools stats ERR1665297_sorted.bam > ERR1665297_sorted.stats.txt
 --left-align-indels isnt a valid command "do we want `--dont-left-align-indels`" my mistake, option removed     
 also need ref added in after -f   
 Consider adding options:  
---haplotype-length 50 [increases max non-complex haplotype size]
+--haplotype-length 50 [increases max non-complex haplotype size]   
 --min-mapping-quality 30 [quality filter]   
 --min-base-quality 20 [quality filter]  
 --min-coverage 10 [to skip low coverage sites]   
