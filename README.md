@@ -77,8 +77,15 @@ samtools stats ERR1665297_sorted.bam > ERR1665297_sorted.stats.txt
 
 ## call/phase via freebayes (default calls SNPs, indels and multincleotide polymorphisms)
 
-***--left-align-indels isnt a valid command "do we want `--dont-left-align-indels`" my mistake, option removed     
-also need ref added in after -f***
+--left-align-indels isnt a valid command "do we want `--dont-left-align-indels`" my mistake, option removed     
+also need ref added in after -f   
+Consider adding options:  
+--haplotype-length 50 [increases max non-complex haplotype size]
+--min-mapping-quality 30 [quality filter]
+--min-base-quality 20 [quality filter]
+--min-coverage 10 [to skip low coverage sites]
+
+
 ```
 freebayes --min-alternate-fraction 0.1 --ploidy 4 --hwe-priors-off --allele-balance-priors-off --max-complex-gap 50 -f redclover_ref.fa ERR1665297_sorted.bam > ERR1665297_to_redclover_ref.vcf
 ```
