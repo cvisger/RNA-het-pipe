@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#bash script to print off '0/1/2/3' haplotype counts from VCF 
-# usage: bash VCF_haplotype_count.sh INPUT.vcf 
+#bash script to print off haplotype counts from VCF 
+# usage: bash VCF_quad_allele_count.sh INPUT.vcf 
 
 
 input_file="${1}"
