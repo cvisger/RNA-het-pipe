@@ -10,3 +10,4 @@ conda install freebayes -y
 conda install -c bioconda gmap -y
 conda install -c bioconda samtools -y
 conda install -c bioconda snpeff -y
+conda install -c yuxiang bam2fastq 
