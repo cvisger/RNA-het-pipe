@@ -62,12 +62,11 @@ gunzip Trifolium_pratense.Trpr.dna.chromosome.LG1.fa.gz
 cat Trifolium_pratense.Trpr.dna.chromosome.LG1.fa | wc -l
 head -n half wc- l Trifolium_pratense.Trpr.dna.chromosome.LG1.fa > chrom0.5.fa
 
-#below is some pseudo code in progress
-bwa index
+#below is some code in progress that hasn't been checked yet
+bwa index chrom0.5.fa
 
-bwa-mem map all.fastq to chrom 1 | samtools view -b -F 4 > mapped.bam
-
-bamToFastq -bam mapped.bam -fq allchrome1.fastq
+bwa-mem chrom0.5.fa all.fastq | samtools view -bS | samtools view -b -F 4 > mappedchrom0.5.bam
+bamToFastq -bam mappedchrom0.5.bam -fq mappedchrom0.5.fastq
 
 
 ```
