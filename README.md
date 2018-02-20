@@ -56,6 +56,20 @@ do
 	fastq-dump "$i"
 	cat "$i".fastq >> all.fastq
 done
+
+wget ftp://ftp.ensemblgenomes.org/pub/plants/release-38/fasta/trifolium_pratense/dna/Trifolium_pratense.Trpr.dna.chromosome.LG1.fa.gz
+gunzip Trifolium_pratense.Trpr.dna.chromosome.LG1.fa.gz
+cat Trifolium_pratense.Trpr.dna.chromosome.LG1.fa | wc -l
+head -n half wc- l Trifolium_pratense.Trpr.dna.chromosome.LG1.fa > chrom0.5.fa
+
+#below is some pseudo code in progress
+bwa index
+
+bwa-mem map all.fastq to chrom 1 | samtools view -b -F 4 > mapped.bam
+
+bamToFastq -bam mapped.bam -fq allchrome1.fastq
+
+
 ```
 
 
