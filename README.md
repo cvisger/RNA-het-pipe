@@ -35,6 +35,31 @@ fastqc ERR1665297.trimmed.fq
 ```
 Trim output: Input Reads: 20856487 Surviving: 17829749 (85.49%) Dropped: 3026738 (14.51%)
 
+# create postiive control by concatinating reads mapping to ~half of chromosome 1 only from multiple individuals to all reads of a single individual.
+
+```
+touch all.fastq
+declare -a arr=("ERR1665298"
+"ERR1665299"
+"ERR1665300"
+"ERR1665301"
+"ERR1665302"
+"ERR1665303"
+"ERR1665304"
+"ERR1665305"
+"ERR1665306"
+"ERR1665307"
+"ERR1665308")
+
+for i in "${arr[@]}"
+do
+	fastq-dump "$i"
+	cat "$i".fastq >> all.fastq
+done
+```
+
+
+
 # TODO
 specify size when trimming....ditch really short reads also test just using ILLUMINACLIP TruSeq Adapter and no quality clip  
 Part-done: added a final MINLEN option and relaxed trimming slightly to phred 20
