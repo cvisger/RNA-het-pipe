@@ -11,14 +11,14 @@ for LG in "${LG_list[@]}"
 do
 	echo -n "Total number of quadra-allelic 0/1/2/3 sites on Scaffold "$LG":"
 	grep $LG  $input_file | grep '0/1/2/3'| wc -l
-	grep $LG  $input_file | grep '0/1/2/3'| awk -v OFS='\t' '{print $2}'
+	grep $LG  $input_file | grep '0/1/2/3'| awk -v OFS='\t' '{print $2, }'
 done
 
 for LG in "${LG_list[@]}"
 do
 	echo -n "Total number of quadra-allelic 1/2/3/4 sites on Scaffold "$LG":"
 	grep $LG  $input_file | grep '1/2/3/4'| wc -l
-	grep $LG  $input_file | grep '1/2/3/4'| awk -v OFS='\t' '{print $2}'
+	grep $LG  $input_file | grep '1/2/3/4'| awk -v OFS='\t' '{print $2, }'
 done
 
 exit 0
