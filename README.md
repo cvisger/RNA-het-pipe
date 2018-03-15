@@ -66,7 +66,10 @@ head -n half wc- l Trifolium_pratense.Trpr.dna.chromosome.LG1.fa > chrom0.5.fa
 bwa index chrom0.5.fa
 
 bwa-mem chrom0.5.fa all.fastq | samtools view -bS | samtools view -b -F 4 > mappedchrom0.5.bam
-bamToFastq -bam mappedchrom0.5.bam -fq mappedchrom0.5.fastq
+#bamToFastq -bam mappedchrom0.5.bam -fq mappedchrom0.5.fastq
+
+#extract fq.gz file containing mapped reads
+samtools view -h file.bam | samtools bam2fq - | gzip > outfile.fq.gz
 
 
 ```
