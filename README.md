@@ -38,6 +38,7 @@ Trim output: Input Reads: 20856487 Surviving: 17829749 (85.49%) Dropped: 3026738
 # create postiive control by concatinating reads mapping to ~half of chromosome 1 only from multiple individuals to all reads of a single individual.
 
 ```
+
 touch all.fastq
 declare -a arr=("ERR1665298"
 "ERR1665299"
@@ -53,7 +54,7 @@ declare -a arr=("ERR1665298"
 
 for i in "${arr[@]}"
 do
-	fastq-dump "$i"
+	docker run --rm -v "$(pwd)":/data -w /data inutano/sra-toolkit fastq-dump "$i"
 	cat "$i".fastq >> all.fastq
 done
 
